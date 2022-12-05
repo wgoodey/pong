@@ -44,3 +44,4 @@ class Scoreboard:
         self.left.update()
         self.right.score = 0
         self.left.update()
+        self.right.update()

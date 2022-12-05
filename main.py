@@ -58,8 +58,12 @@ def detect_bounce():
         ball.bounce("wall")
     elif ball.distance(left_paddle) < 50 and ball.xcor() <= left_paddle.xcor() + BALL_WIDTH:
         ball.bounce("paddle")
+        return True
     elif ball.distance(right_paddle) < 50 and ball.xcor() >= right_paddle.xcor() - BALL_WIDTH:
         ball.bounce("paddle")
+        return True
+
+    return False
 
 
 def detect_score():
@@ -87,16 +91,17 @@ def is_game_over():
 def play():
     point_scored = False
     while not point_scored:
-        ball.move(10)
+
+        ball.move()
         detect_bounce()
-        screen.update()
-        time.sleep(0.05)
+        time.sleep(ball.ball_speed)
         point_scored = detect_score()
+        screen.update()
 
 
 def reset_ball():
     ball.goto(0, 0)
-    ball.set_initial_angle()
+    ball.prepare_ball()
     left_paddle.move_to_side("left")
     right_paddle.move_to_side("right")
     screen.update()
@@ -124,20 +129,13 @@ while play_again:
     while not game_over:
         reset_ball()
         play()
-        screen.update()
         game_over = is_game_over()
 
-    end_message = Turtle()
-    end_message.hideturtle()
-    end_message.color("white")
-    end_message.penup()
     if scoreboard.winner == "Player 1":
         offset = -200
     else:
         offset = 200
     end_message.goto(offset, 0)
     end_message.write(f"{scoreboard.winner} wins!", align="center", font=("lucida console", 16, "normal"))
-
-    # play_again()
 
 mainloop()
