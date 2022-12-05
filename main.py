@@ -34,22 +34,18 @@ end_message.penup()
 
 def left_paddle_up():
     left_paddle.up()
-    screen.update()
 
 
 def left_paddle_down():
     left_paddle.down()
-    screen.update()
 
 
 def right_paddle_up():
     right_paddle.up()
-    screen.update()
 
 
 def right_paddle_down():
     right_paddle.down()
-    screen.update()
 
 
 def detect_hit():

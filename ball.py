@@ -15,7 +15,7 @@ def set_initial_angle():
 class Ball(Turtle):
 
     def __init__(self, screen_height, screen_width):
-        super().__init__("square")
+        super().__init__("circle")
         self.fillcolor("white")
         self.penup()
         self.screen_height = screen_height
@@ -33,7 +33,7 @@ class Ball(Turtle):
 
     def move(self, distance):
         super().forward(distance)
-        self.settiltangle(-self.heading())
+        # self.settiltangle(-self.heading())
 
     def bounce(self, surface="wall"):
         bounce_type = {
