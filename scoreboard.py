@@ -41,7 +41,8 @@ class Scoreboard:
 
     def reset(self):
         self.left.score = 0
-        self.left.update()
         self.right.score = 0
+        self.left.hide_under_ten()
+        self.right.hide_under_ten()
         self.left.update()
         self.right.update()

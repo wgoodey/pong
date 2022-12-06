@@ -10,17 +10,24 @@ class Score:
         self.left = Number(block_size)
         self.right = Number(block_size)
         self.score = 0
-        y_offset = (screen_height / 2) - block_size
+        self.y_offset = (screen_height / 2) - block_size
 
-        if side == "left":
-            self.left.move((X_OFFSET + block_size) * -1, y_offset)
-            self.left.hide_number()
+        y_offset = (screen_height / 2) - block_size
+        if self.side == "left":
+            self.left.move((X_OFFSET + block_size * 4) * -1, y_offset)
             self.right.move(-X_OFFSET, y_offset)
-        elif side == "right":
+        elif self.side == "right":
             self.left.move(X_OFFSET - (block_size * 2), y_offset)
-            self.right.hide_number()
             self.right.move(X_OFFSET + (block_size * 2), y_offset)
 
+        self.hide_under_ten()
+
+
+    def hide_under_ten(self):
+        if self.side == "left":
+            self.left.hide_number()
+        elif self.side == "right":
+            self.right.hide_number()
         self.update()
 
     def increase_score(self):

@@ -1,5 +1,5 @@
 import time
-from turtle import Turtle, Screen, mainloop
+from turtle import Turtle, Screen
 from scoreboard import Scoreboard
 from paddle import Paddle
 from ball import Ball
@@ -10,7 +10,7 @@ NUMBER_BLOCK_SIZE = 10
 BALL_WIDTH = 20
 PADDLE_WIDTH = 20
 PADDLE_HEIGHT = 100
-PAUSE_BETWEEN_ROUNDS = 3
+PAUSE_BETWEEN_ROUNDS = 2
 PLAY_TO = 10
 
 screen = Screen()
@@ -121,8 +121,7 @@ screen.onkeypress(fun=play_again, key='space')
 
 screen.listen()
 
-play_again = True
-while play_again:
+while True:
     end_message.clear()
 
     game_over = is_game_over()
@@ -137,5 +136,3 @@ while play_again:
         offset = 200
     end_message.goto(offset, 0)
     end_message.write(f"{scoreboard.winner} wins!", align="center", font=("lucida console", 16, "normal"))
-
-mainloop()
